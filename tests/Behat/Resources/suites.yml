@@ -1,0 +1,3 @@
+default:
+    suites:
+        referral_suite:
