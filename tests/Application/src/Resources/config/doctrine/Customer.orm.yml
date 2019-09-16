@@ -1,0 +1,7 @@
+PTS\SyliusReferralPlugin\Entity\Customer:
+    type: entity
+    table: sylius_customer
+    manyToOne:
+        enroller:
+            targetEntity: PTS\SyliusReferralPlugin\Entity\Customer
+            nullable: true

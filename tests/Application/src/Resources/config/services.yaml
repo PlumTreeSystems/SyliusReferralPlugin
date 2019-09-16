@@ -1,0 +1,8 @@
+services:
+  app.account.distributor:
+    class: 'PTS\SyliusReferralPlugin\Menu\DistributorAccountMenuBuilder'
+    arguments:
+      - '@knp_menu.factory'
+      - '@event_dispatcher'
+    tags:
+      - { name: knp_menu.menu_builder, method: createMenu, alias: app.account.distributor }

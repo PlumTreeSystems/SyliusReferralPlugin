@@ -20,5 +20,17 @@ final class PTSSyliusReferralExtension extends Extension
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
 
         $loader->load('services.yaml');
+
+        $paths = $config['channel_paths'];
+        $namedPaths = [];
+        foreach($paths as $path) {
+            $pathArr = [
+                'path' => $path['path'],
+                'domain' => $path['domain'],
+                'default' => $path['default']
+            ];
+            $namedPaths[$path['name']] = $pathArr;
+        }
+        $container->setParameter('app_channel_paths', $namedPaths);
     }
 }

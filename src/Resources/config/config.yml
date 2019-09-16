@@ -1,0 +1,7 @@
+imports:
+  - { resource: "resources/resources.yaml" }
+
+pts_sylius_referral:
+  channel_paths:
+    -   name: 'C_STORE'
+        default: true

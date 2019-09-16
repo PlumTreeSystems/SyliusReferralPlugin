@@ -1,0 +1,30 @@
+services:
+  app.account.distributor:
+    class: 'PTS\SyliusReferralPlugin\Menu\DistributorAccountMenuBuilder'
+    arguments:
+      - '@knp_menu.factory'
+      - '@event_dispatcher'
+    tags:
+      - { name: knp_menu.menu_builder, method: createMenu, alias: app.account.distributor }
+  app.referral.manager:
+    class: 'PTS\SyliusReferralPlugin\Service\ReferralManager'
+    arguments:
+      - '@sylius.storage.session'
+      - '@sylius.repository.customer'
+      - '@security.token_storage'
+      - '@router'
+      - '@sylius.repository.product'
+      - '%app_channel_paths%'
+      - '@app.url_manager.channel'
+    lazy: true
+    public: true
+  app.url_manager.channel:
+    class: 'PTS\SyliusReferralPlugin\Service\ChannelUrlManager'
+    arguments:
+      - '%app_channel_paths%'
+  app.referral.extension:
+    class: 'PTS\SyliusReferralPlugin\Extension\ReferralLinkExtension'
+    arguments:
+      - '@app.referral.manager'
+    tags:
+      - 'twig.extension'

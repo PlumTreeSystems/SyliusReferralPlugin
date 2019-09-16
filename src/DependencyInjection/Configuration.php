@@ -22,6 +22,27 @@ final class Configuration implements ConfigurationInterface
             $rootNode = $treeBuilder->root('pts_sylius_referral_plugin');
         }
 
+        $rootNode
+            ->children()
+            ->arrayNode('channel_paths')
+            ->arrayPrototype()
+            ->children()
+            ->scalarNode('name')->end()
+            ->scalarNode('path')
+            ->defaultValue('/')
+            ->end()
+            ->scalarNode('domain')
+            ->defaultValue('*')
+            ->end()
+            ->booleanNode('default')
+            ->defaultValue(false)
+            ->end()
+            ->end()
+            ->end()
+            ->end()
+            ->end()
+        ;
+
         return $treeBuilder;
     }
 }
