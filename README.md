@@ -1,88 +1,33 @@
-<p align="center">
-    <a href="https://sylius.com" target="_blank">
-        <img src="https://demo.sylius.com/assets/shop/img/logo.png" />
-    </a>
-</p>
+# Sylius Referral Plugin [![Build Status](https://travis-ci.org/PlumTreeSystems/SyliusReferralPlugin.svg?branch=master)](https://travis-ci.org/PlumTreeSystems/SyliusReferralPlugin)
 
-<h1 align="center">Plugin Skeleton</h1>
-
-<p align="center">Skeleton for starting Sylius plugins.</p>
+A plugin that lets you customize how you filter your orders and save them into batches.
 
 ## Installation
 
-1. Run `composer create-project sylius/plugin-skeleton ProjectName`.
+Install the package with this command: `composer require plumtreesystems/sylius-referral`
 
-2. From the plugin skeleton root directory, run the following commands:
+Add plugin dependencies to your bundles.php file:
 
-    ```bash
-    $ (cd tests/Application && yarn install)
-    $ (cd tests/Application && yarn build)
-    $ (cd tests/Application && bin/console assets:install public -e test)
-    
-    $ (cd tests/Application && bin/console doctrine:database:create -e test)
-    $ (cd tests/Application && bin/console doctrine:schema:create -e test)
-    ```
+```php
+return [
+    PTS\SyliusReferralPlugin\PTSSyliusReferralPlugin::class => ['all' => true],
+];
+```
 
-To be able to setup a plugin's database, remember to configure you database credentials in `tests/Application/.env` and `tests/Application/.env.test`.
+Import the bundle's configuration to your `_sylius.yaml` file
 
-## Usage
+```yaml
+imports:
+    - { resource: "@PTSSyliusReferralPlugin/Resources/config/config.yml" }
+```
 
-### Running plugin tests
+Import the bundle's routes to your `routes.yaml` file
 
-  - PHPUnit
+```yaml
+pts_sylius_referral_plugin:
+  resource: "@PTSSyliusReferralPlugin/Resources/config/routes.yaml"
+```
 
-    ```bash
-    $ vendor/bin/phpunit
-    ```
+Copy the bundle's templates from `src/Resources/templates` to your project `templates/` folder
 
-  - PHPSpec
-
-    ```bash
-    $ vendor/bin/phpspec run
-    ```
-
-  - Behat (non-JS scenarios)
-
-    ```bash
-    $ vendor/bin/behat --tags="~@javascript"
-    ```
-
-  - Behat (JS scenarios)
- 
-    1. Download [Chromedriver](https://sites.google.com/a/chromium.org/chromedriver/)
-    
-    2. Download [Selenium Standalone Server](https://www.seleniumhq.org/download/).
-    
-    2. Run Selenium server with previously downloaded Chromedriver:
-    
-        ```bash
-        $ java -Dwebdriver.chrome.driver=chromedriver -jar selenium-server-standalone.jar
-        ```
-        
-    3. Run test application's webserver on `localhost:8080`:
-    
-        ```bash
-        $ (cd tests/Application && bin/console server:run localhost:8080 -d public -e test)
-        ```
-    
-    4. Run Behat:
-    
-        ```bash
-        $ vendor/bin/behat --tags="@javascript"
-        ```
-
-### Opening Sylius with your plugin
-
-- Using `test` environment:
-
-    ```bash
-    $ (cd tests/Application && bin/console sylius:fixtures:load -e test)
-    $ (cd tests/Application && bin/console server:run -d public -e test)
-    ```
-    
-- Using `dev` environment:
-
-    ```bash
-    $ (cd tests/Application && bin/console sylius:fixtures:load -e dev)
-    $ (cd tests/Application && bin/console server:run -d public -e dev)
-    ```
+Install the assets of the bundle by executing this command: `php bin/console assets:install public`
