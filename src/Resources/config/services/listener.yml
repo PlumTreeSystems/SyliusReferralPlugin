@@ -1,0 +1,9 @@
+services:
+  app.referral.listener:
+    class: 'PTS\SyliusReferralPlugin\Listener\ReferralLinkListener'
+    arguments:
+      - '@app.referral.manager'
+      - '@security.token_storage'
+      - '@sylius.repository.customer'
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, method: onRequest }

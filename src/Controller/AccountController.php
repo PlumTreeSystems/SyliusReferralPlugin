@@ -7,6 +7,7 @@ use PTS\SyliusReferralPlugin\Entity\Customer;
 use Sylius\Component\Core\Model\ShopUser;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class AccountController extends Controller

@@ -1,0 +1,14 @@
+app:
+  menu:
+    shop:
+      account:
+        customers: 'My Referrals'
+  ui:
+    customers: 'My Referrals'
+    referrals: 'Referrals'
+    useThisLinkToRefer: 'Use this link to refer new customers'
+    bellowAreYourCustomers: 'The table below contains all of your referred customers'
+    productRefer: 'Use this link to refer customers to this product'
+    customer:
+      inviteAsDistributor: 'Invite as distributor'
+      invitePending: 'Invite pending'

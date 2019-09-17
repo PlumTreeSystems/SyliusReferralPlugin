@@ -1,3 +1,6 @@
+imports:
+  - { resource: "services/listener.yml" }
+
 services:
   app.account.distributor:
     class: 'PTS\SyliusReferralPlugin\Menu\DistributorAccountMenuBuilder'

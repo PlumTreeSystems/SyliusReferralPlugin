@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 class ReferralManager
 {
-    static private $expirationDays = 90 * (24*60*60); // 90 days (h*m*s)
+    static private $expirationDays = 7 * (24*60*60); // 7 days (h*m*s)
 
     /** @var SessionStorage */
     private $session;
