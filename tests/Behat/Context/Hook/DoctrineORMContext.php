@@ -21,7 +21,6 @@ final class DoctrineORMContext implements Context
 {
     /**
      * @var EntityManagerInterface
-     *
      */
     private $entityManager;
 

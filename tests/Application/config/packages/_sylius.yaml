@@ -16,3 +16,10 @@ pts_sylius_referral:
     customers:
         enroller_edit:
             enabled: true
+sylius_customer:
+    resources:
+        customer:
+            classes:
+                model: PTS\SyliusReferralPlugin\Entity\Customer
+                repository: PTS\SyliusReferralPlugin\Repository\CustomerRepository
+                controller: PTS\SyliusReferralPlugin\Controller\CustomerController
