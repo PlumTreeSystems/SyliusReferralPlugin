@@ -72,4 +72,10 @@ class CustomerRepository extends BaseCustomerRepository
 
         return $orders;
     }
+    public function getCustomersWithoutId($id) {
+        $query = $this->createQueryBuilder('n')
+            ->where("n.id <> $id");
+        return $query;
+    }
+
 }

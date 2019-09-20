@@ -1,0 +1,45 @@
+sylius_grid:
+  grids:
+    app_admin_customer_edit_enroller:
+      driver:
+        name: doctrine/orm
+        options:
+          class: "%sylius.model.customer.class%"
+          repository:
+            method: getCustomersWithoutId
+            arguments:
+              id: $id
+      sorting:
+        createdAt: desc
+      fields:
+        firstName:
+          type: string
+          label: sylius.ui.first_name
+          sortable: ~
+        lastName:
+          type: string
+          label: sylius.ui.last_name
+          sortable: ~
+        email:
+          type: string
+          label: sylius.ui.email
+          sortable: ~
+        createdAt:
+          type: datetime
+          label: sylius.ui.registration_date
+          sortable: ~
+          options:
+            format: d-m-Y H:i
+      filters:
+        search:
+          type: string
+          label: sylius.ui.search
+          options:
+            fields: [email, firstName, lastName]
+      actions:
+        item:
+          selectAsEnroller:
+            type: selectAsEnroller
+  templates:
+    action:
+      selectAsEnroller: "Grid/Action/selectAsEnroller.html.twig"

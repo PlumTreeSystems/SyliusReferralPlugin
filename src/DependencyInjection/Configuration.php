@@ -24,6 +24,17 @@ final class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->arrayNode('customers')
+                ->children()
+                    ->arrayNode('enroller_edit')
+                        ->children()
+                        ->booleanNode('enabled')->defaultFalse()
+                        ->end()
+                ->end()
+            ->end();
+
+        $rootNode
+            ->children()
             ->arrayNode('channel_paths')
             ->arrayPrototype()
             ->children()

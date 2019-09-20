@@ -3,12 +3,32 @@ app:
     shop:
       account:
         customers: 'My Referrals'
+  admin:
+    customer:
+      referrals: 'Referrals'
+      enroller: 'Enroller'
+      noEnroller: 'This customer does not have an enroller'
+      noGroup: 'None'
+      changeEnrollerModal:
+        title: "Change the Customer's Enroller"
+        label: 'Are you sure you want to choose this Enroller?'
   ui:
     customers: 'My Referrals'
     referrals: 'Referrals'
     useThisLinkToRefer: 'Use this link to refer new customers'
     bellowAreYourCustomers: 'The table below contains all of your referred customers'
     productRefer: 'Use this link to refer customers to this product'
+    noReferrals: 'This customer does not have any referrals'
     customer:
       inviteAsDistributor: 'Invite as distributor'
       invitePending: 'Invite pending'
+  buttons:
+    selectAsEnroller: 'Select as Enroller'
+  messages:
+    success:
+      changedEnroller: 'Succesfully changed the enroller'
+    error:
+      editEnrollerDisabled: 'Enroller editing is disabled'
+  modal:
+    cancelButton: 'Cancel'
+    proceed: 'Proceed'

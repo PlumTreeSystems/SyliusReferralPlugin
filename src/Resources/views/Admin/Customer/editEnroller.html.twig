@@ -1,0 +1,33 @@
+{% extends '@SyliusAdmin/layout.html.twig' %}
+
+{% block title %}{{ 'sylius.ui.customer'|trans ~' '~ customer.email }} {{ parent() }}{% endblock %}
+
+{% block content %}
+    {{ sonata_block_render_event('sylius.admin.customer.show.before_header', {'resource': resource}) }}
+
+    <div class="ui stackable two column grid">
+        {% include '@SyliusAdmin/Customer/Show/_header.html.twig' %}
+
+        {{ sonata_block_render_event('sylius.admin.customer.show.header', {'resource': resource}) }}
+
+        {% set menu = knp_menu_get('sylius.admin.customer.show', [], {'customer': customer}) %}
+        {{ knp_menu_render(menu, {'template': '@SyliusUi/Menu/top.html.twig'}) }}
+    </div>
+
+    {{ sonata_block_render_event('sylius.admin.customer.show.after_header', {'resource': resource}) }}
+
+    <div class="ui divider"></div>
+    {% include '@SyliusAdmin/Customer/Show/_breadcrumb.html.twig' %}
+
+    {% include 'Admin/Customer/search.html.twig' %}
+
+    {% include 'Admin/Customer/editEnrollerModal.html.twig' %}
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="{{ asset('bundles/ptssyliusreferralplugin/editEnroller.js') }}"></script>
+
+{% endblock %}

@@ -31,3 +31,8 @@ services:
       - '@app.referral.manager'
     tags:
       - 'twig.extension'
+  app.customer.manager:
+    class: 'PTS\SyliusReferralPlugin\Service\CustomerManager'
+    arguments:
+      - '@doctrine.orm.entity_manager'
+    public: true

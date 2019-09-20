@@ -1,0 +1,21 @@
+<div class="ui small basic modal" id="selectEnrollerModal">
+    <div class="ui icon header">
+        <i class="user alternate icon"></i>
+        {{ 'app.admin.customer.changeEnrollerModal.title'|trans }}
+    </div>
+    <div class="content">
+        <div class="ui" style="text-align: center;">
+            <span>{{ 'app.admin.customer.changeEnrollerModal.label'|trans }}</span>
+        </div>
+    </div>
+    <div class="actions" style="text-align: center;">
+        <button class="ui red basic cancel inverted button">
+            <i class="remove icon"></i>
+            {{ 'app.modal.cancelButton'|trans }}
+        </button>
+        <a class="ui green ok inverted button" id="selectEnrollerAgree">
+            <i class="checkmark icon"></i>
+            {{ 'app.modal.proceed'|trans }}
+        </a>
+    </div>
+</div>

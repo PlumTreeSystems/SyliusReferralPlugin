@@ -1,0 +1,73 @@
+{% block enrolee_table %}
+    {% if customers is empty %}
+        <p>
+            {{ 'app.ui.noReferrals'|trans }}
+        </p>
+    {% else %}
+        <table class="ui single line table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Join Date</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for customer in customers %}
+                <tr>
+                    <td>{{ customer.firstName }} {{ customer.lastName }}</td>
+                    <td>{{ customer.email }}</td>
+                    <td>{{ customer.createdAt|date('Y-m-d') }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            {% if pagination.maxPages > 1 %}
+                <tfoot class="full-width">
+                <tr>
+                    <th colspan="4">
+                        <div style="width: 100%; display: flex; justify-content: center">
+                            <div class="ui pagination menu">
+                                {% if pagination.thisPage == 1 %}
+                                    <a class="item disabled"><i class="angle left icon"></i></a>
+                                {% else %}
+                                    {% if pagination.id is null %}
+                                        <a class="item"
+                                           href="{{ path(pagination.route, { 'page': pagination.thisPage - 1 }) }}"><i
+                                                    class="angle left icon"></i></a>
+                                    {% else %}
+                                        <a class="item"
+                                           href="{{ path(pagination.route, { 'page': pagination.thisPage - 1, 'id': pagination.id }) }}"><i
+                                                    class="angle left icon"></i></a>
+                                    {% endif %}
+                                {% endif %}
+
+
+                                <a class="active item">
+                                    {{ pagination.thisPage }}
+                                </a>
+
+
+                                {% if pagination.thisPage == pagination.maxPages %}
+                                    <a class="item disabled"><i class="angle right icon"></i></a>
+                                {% else %}
+                                    {% if pagination.id is null %}
+                                        <a class="item"
+                                           href="{{ path(pagination.route, { 'page': pagination.thisPage + 1 }) }}"><i
+                                                    class="angle right icon"></i></a>
+                                    {% else %}
+                                        <a class="item"
+                                           href="{{ path(pagination.route, { 'page': pagination.thisPage + 1, 'id': pagination.id }) }}"><i
+                                                    class="angle right icon"></i></a>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+                </tfoot>
+            {% endif %}
+        </table>
+    {% endif %}
+
+{% endblock %}

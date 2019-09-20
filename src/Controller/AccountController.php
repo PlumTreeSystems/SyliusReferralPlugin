@@ -4,6 +4,7 @@
 namespace PTS\SyliusReferralPlugin\Controller;
 
 use PTS\SyliusReferralPlugin\Entity\Customer;
+use PTS\SyliusReferralPlugin\Service\CustomerManager;
 use Sylius\Component\Core\Model\ShopUser;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,13 +16,15 @@ class AccountController extends Controller
     public function referralAction(Request $request)
     {
         $token = $this->get('security.token_storage')->getToken();
+        $customerManager = $this->get('app.customer.manager');
         if ($token) {
             /** @var ShopUser $user */
             $user = $token->getUser();
             if ($user && $user instanceof ShopUser) {
                 $page = $request->get('page');
                 $enroller = $user->getCustomer();
-                $data = $this->getPaginatedCustomers($enroller, $page);
+                $routeName = $request->get('_route');
+                $data = $customerManager->getPaginatedCustomers($enroller, $page, $routeName);
                 return $this->render(
                     'Account\customers.html.twig',
                     [
@@ -32,31 +35,6 @@ class AccountController extends Controller
             }
         }
         throw new BadRequestHttpException('Unauthorized to view this resource');
-    }
-
-    private function getPaginatedCustomers($enroller, $page)
-    {
-        if (!$page || $page < 0) {
-            $page = 1;
-        }
-        $limit = 7;
-        $customers = $this->getDoctrine()
-            ->getRepository(Customer::class)
-            ->getEnrolled($enroller, $limit, floor($page));
-        $maxPages = ceil($customers->count()/$limit);
-        $thisPage = (int) $page;
-        if ($maxPages < $thisPage) {
-            $thisPage = $maxPages;
-        }
-
-        return [
-            'customers' => iterator_to_array($customers->getIterator()),
-            'pagination' => [
-                'maxPages' => $maxPages,
-                'thisPage' => $thisPage,
-                'route' => 'app_account_customers'
-            ]
-        ];
     }
 
     public function redirectAction(Request $request)

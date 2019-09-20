@@ -31,3 +31,18 @@ pts_sylius_referral_plugin:
 Copy the bundle's templates from `src/Resources/templates` to your project `templates/` folder
 
 Install the assets of the bundle by executing this command: `php bin/console assets:install public`
+
+Add your store's channels to your configuration.
+```yaml
+pts_sylius_referral:
+  channel_paths:
+    -   name: 'C_STORE'
+        default: true
+```
+If you desire the ability to edit customer's enrollers in your admin panel, enable it in your configuration
+```yaml
+pts_sylius_referral:
+  customers:
+    enroller_edit:
+      enabled: true     # false by default
+```

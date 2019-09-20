@@ -1,7 +1,11 @@
 imports:
   - { resource: "resources/resources.yaml" }
+  - { resource: "grids/admin.yml" }
 
 pts_sylius_referral:
   channel_paths:
     -   name: 'C_STORE'
         default: true
+  customers:
+    enroller_edit:
+      enabled: true
