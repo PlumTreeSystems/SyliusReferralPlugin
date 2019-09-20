@@ -1,0 +1,22 @@
+app_account_customers:
+  path: /{_locale}/account/customers
+  methods: [GET]
+  defaults:
+    _controller: PTS\SyliusReferralPlugin\Controller\AccountController::referralAction
+sylius_admin_customer_show:
+  path: admin/customers/{id}
+  defaults:
+    _controller: sylius.controller.customer:adminShowAction
+    _sylius:
+      section: admin
+      template: "Admin/Customer/show.html.twig"
+      permission: true
+app_admin_customer_edit_enroller:
+  path: admin/customers/edit_enroller/{id}
+  defaults:
+    _controller: sylius.controller.customer:adminEditEnrollerAction
+    _sylius:
+      section: admin
+      template: "Admin/Customer/editEnroller.html.twig"
+      grid: app_admin_customer_edit_enroller
+      permission: true

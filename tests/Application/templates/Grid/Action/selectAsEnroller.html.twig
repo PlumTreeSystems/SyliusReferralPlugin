@@ -1,0 +1,13 @@
+{% import '@SyliusUi/Macro/buttons.html.twig' as buttons %}
+
+{% from _self import link %}
+{% set parameters = grid.parameters.all() %}
+
+<button class="ui blue labeled icon button" name="selectEnroller" data-url="{{ link(app.request.attributes, data.id) }}">
+    <i class="icon check"></i>{{ 'app.buttons.selectAsEnroller'|trans }}
+</button>
+
+{% macro link(attributes, enrollerId) %}
+    {% set params = attributes.get('_route_params')|merge({_enroller: enrollerId, _action: "selectEnroller"}) %}
+    {{ path(attributes.get('_route'), params) }}
+{% endmacro %}

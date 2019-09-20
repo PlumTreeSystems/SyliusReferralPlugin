@@ -1,0 +1,57 @@
+{% block enroller_table %}
+    {% if enroller is not null %}
+        <div class="segment">
+            <div class="ui fluid card">
+
+                <div class="content">
+                    <div class="header">
+                        {{ enroller.fullName }}
+                        <div class="ui right floated label">
+                            <i class="icon users"></i>
+                            {% if enroller.group is null %}
+                                {{ 'app.admin.customer.noGroup'|trans }}
+                            {% else %}
+                                {{ enroller.group }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="meta">
+                        <span class="date">
+                            {{ 'sylius.ui.customer_since'|trans }} {{ enroller.createdAt|date }}
+                        </span>
+                    </div>
+                    <div class="ui divider"></div>
+                    <div class="extra content">
+                        <a class="ui labeled icon button blue" id="show_enroller"
+                           href="{{ path('sylius_admin_customer_show', { 'id': enroller.id }) }}">
+                            <i class="icon search"></i>
+                            Show Enroller
+                        </a>
+                        {% if enabledEditEnroller %}
+                        <a class="ui labeled icon button gray" id="edit_enroller"
+                           href="{{ path('app_admin_customer_edit_enroller', { 'id': customer.id }) }}">
+                            <i class="icon edit"></i>
+                            Change Enroller
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    {% else %}
+        <p>
+            {{ 'app.admin.customer.noEnroller'|trans }}
+        </p>
+        {% if enabledEditEnroller %}
+            <a class="ui labeled icon button gray" id="edit_enroller"
+               href="{{ path('app_admin_customer_edit_enroller', { 'id': customer.id }) }}">
+                <i class="icon edit"></i>
+                Set Enroller
+            </a>
+        {% endif %}
+    {% endif %}
+
+{% endblock %}

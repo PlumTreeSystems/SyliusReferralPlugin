@@ -30,6 +30,6 @@ abstract class BasePage extends SymfonyPage implements SymfonyPageInterface
     private function getRequestUri($url)
     {
         $parts = parse_url($url);
-        return $parts['path'].'?'.$parts['query'].'#'.$parts['fragment'];
+        return $parts['path'].'?'.$parts['query'];
     }
 }

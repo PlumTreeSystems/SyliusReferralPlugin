@@ -1,0 +1,24 @@
+<div class="ui bottom attached tab segment" data-tab="referrals" id="sylius-product-referrals">
+    <div class="sub header">{{ 'app.ui.productRefer'|trans }}</div>
+    <div class="ui form large list" id="customer-information">
+        <div class="two fields">
+            <div class="field">
+                <input id="referralLink" type="text" value="{{ referralLink(product.id) }}" readonly>
+
+            </div>
+            <div class="field">
+                <button class="ui large primary button" onclick="referralCopy()">Copy Link</button>
+
+            </div>
+        </div>
+    </div>
+    {% block javascripts %}
+        <script type="text/javascript">
+            function referralCopy() {
+                const input = document.querySelector('#referralLink');
+                input.select();
+                document.execCommand('copy');
+            }
+        </script>
+    {% endblock %}
+</div>

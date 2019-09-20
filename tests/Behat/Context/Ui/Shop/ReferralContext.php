@@ -155,7 +155,7 @@ final class ReferralContext implements Context
      */
     public function theStoreHasAEnrolledUserWithRoleWithNameAndWithEmail($role, $name, $email, $password, Customer $customer)
     {
-        $this->createUser($role, $name, $email, $password, '', $customer);
+        $this->createUser($role, $name, $email, $password, $customer);
     }
 
     /**

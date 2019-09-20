@@ -1,0 +1,40 @@
+{% extends '@SyliusShop/Account/layout.html.twig' %}
+
+{% block breadcrumb %}
+    <div class="ui breadcrumb">
+        <a href="{{ path('sylius_shop_homepage') }}" class="section">{{ 'sylius.ui.home'|trans }}</a>
+        <div class="divider"> / </div>
+        <a href="{{ path('sylius_shop_account_dashboard') }}" class="section">{{ 'sylius.ui.my_account'|trans }}</a>
+        <div class="divider"> / </div>
+        <div class="active section">{{ 'app.ui.customers'|trans }}</div>
+    </div>
+{% endblock %}
+
+{% block subcontent %}
+    <h1 class="ui dividing header">
+        {{ 'app.ui.customers'|trans }}
+    </h1>
+    <div class="sub header">{{ 'app.ui.useThisLinkToRefer'|trans }}</div>
+    <div class="ui form large list" id="customer-information">
+        <div class="two fields">
+            <div class="field">
+                <input id="referralLink" type="text" value="{{ referralRootLink() }}" readonly>
+
+            </div>
+            <div class="field">
+                <button class="ui large primary button" onclick="referralCopy()">Copy Link</button>
+            </div>
+        </div>
+    </div>
+    <div class="sub header">{{ 'app.ui.bellowAreYourCustomers'|trans }}</div>
+    {% include 'Account/customerTable.html.twig' %}
+    {% block additional_javascripts %}
+        <script type="text/javascript">
+            function referralCopy() {
+                const input = document.querySelector('#referralLink');
+                input.select();
+                document.execCommand('copy');
+            }
+        </script>
+    {% endblock %}
+{% endblock %}
