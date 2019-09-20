@@ -3,6 +3,45 @@
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
         <defaults public="true" />
-        <!-- Put your Behat services here -->
+        <service id="app.behat.context.ui.shop.referral" class="Tests\PTS\SyliusReferralPlugin\Behat\Context\Ui\Shop\ReferralContext">
+            <argument type="service" id="app.referral.manager" />
+            <argument type="service" id="sylius.repository.customer" />
+            <argument type="service" id="sylius.behat.page.shop.account.dashboard" />
+            <argument type="service" id="sylius.behat.shared_storage" />
+            <argument type="service" id="router" />
+            <argument type="service" id="sylius.factory.admin_user"/>
+            <argument type="service" id="doctrine.orm.default_entity_manager"/>
+            <argument type="service" id="sylius.repository.customer_group"/>
+            <argument type="service" id="sylius.factory.customer"/>
+            <argument type="service" id="sylius.factory.shop_user"/>
+            <argument type="service" id="sylius.behat.page.shop.contact"/>
+            <argument type="service" id="app.behat.page.shop.referral"/>
+            <tag name="fob.context_service" />
+        </service>
+
+        <service id="app.behat.page.shop.referral" class="Tests\PTS\SyliusReferralPlugin\Behat\Page\Shop\Account\ReferralPage" parent="sylius.behat.symfony_page" public="true" />
+
+        <service id="app.behat.context.ui.login" class="Tests\PTS\SyliusReferralPlugin\Behat\Context\Ui\Shop\LoginContext">
+            <argument type="service" id="sylius.behat.page.shop.account.login" />
+            <tag name="fob.context_service" />
+        </service>
+
+        <service id="app.behat.context.ui.extended.page" class="Tests\PTS\SyliusReferralPlugin\Behat\Context\Ui\ExtendedPageContext">
+            <tag name="fob.context_service" />
+        </service>
+
+        <service id="app.behat.context.hook.doctrine_orm" class="Tests\PTS\SyliusReferralPlugin\Behat\Context\Hook\DoctrineORMContext">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="fob.context_service" />
+        </service>
+
+        <service id="app.behat.context.setup.channel_context" class="Tests\PTS\SyliusReferralPlugin\Behat\Context\Setup\ChannelContext">
+            <argument type="service" id="sylius.behat.shared_storage" />
+            <argument type="service" id="sylius.behat.factory.default_channel"/>
+            <argument type="service" id="sylius.factory.country" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="sylius.custom_factory.zone" />
+            <tag name="fob.context_service" />
+        </service>
     </services>
 </container>

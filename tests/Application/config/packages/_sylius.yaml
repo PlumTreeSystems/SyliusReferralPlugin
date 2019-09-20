@@ -12,3 +12,7 @@ parameters:
 sylius_shop:
     product_grid:
         include_all_descendants: true
+pts_sylius_referral:
+    customers:
+        enroller_edit:
+            enabled: true

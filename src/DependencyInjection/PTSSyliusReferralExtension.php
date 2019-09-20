@@ -23,7 +23,7 @@ final class PTSSyliusReferralExtension extends Extension
 
         $paths = $config['channel_paths'];
         $namedPaths = [];
-        foreach($paths as $path) {
+        foreach ($paths as $path) {
             $pathArr = [
                 'path' => $path['path'],
                 'domain' => $path['domain'],
@@ -31,7 +31,9 @@ final class PTSSyliusReferralExtension extends Extension
             ];
             $namedPaths[$path['name']] = $pathArr;
         }
-        $enabledEnrollerEdit = $config['customers']['enroller_edit']['enabled'];
+        if (isset($config['customers']['enroller_edit']['enabled'])) {
+            $enabledEnrollerEdit = $config['customers']['enroller_edit']['enabled'];
+        }
         $container->setParameter('app_edit_enroller_enabled', $enabledEnrollerEdit);
         $container->setParameter('app_channel_paths', $namedPaths);
     }
