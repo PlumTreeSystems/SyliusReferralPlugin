@@ -13,6 +13,9 @@ sylius_shop:
     product_grid:
         include_all_descendants: true
 pts_sylius_referral:
+    channel_paths:
+        -   name: 'C_STORE'
+            default: true
     customers:
         enroller_edit:
             enabled: true

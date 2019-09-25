@@ -1,0 +1,9 @@
+build:
+  nodes:
+    coverage:
+      tests:
+        override:
+          - command: 'bin/behat'
+            coverage:
+              file: 'build/behat-coverage'
+              format: 'clover'

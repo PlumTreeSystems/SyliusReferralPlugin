@@ -1,6 +1,7 @@
 imports:
   - { resource: "resources/resources.yaml" }
   - { resource: "grids/admin.yml" }
+  - { resource: "resources/twig.yml" }
 
 pts_sylius_referral:
   channel_paths:

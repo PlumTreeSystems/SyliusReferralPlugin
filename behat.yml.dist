@@ -36,7 +36,18 @@ default:
                     selenium2:
                         browser: firefox
             show_auto: false
-
+        LeanPHP\Behat\CodeCoverage\Extension:
+            drivers:
+                - local
+            filter:
+                whitelist:
+                    include:
+                        directories:
+                            'src': ~
+            report:
+                format: clover
+                options:
+                    target: build/behat-coverage
         FriendsOfBehat\SymfonyExtension:
             bootstrap: tests/Application/config/bootstrap.php
             kernel:

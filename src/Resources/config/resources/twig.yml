@@ -1,0 +1,3 @@
+twig:
+  globals:
+    enroller_manager: '@app.enroller.manager'

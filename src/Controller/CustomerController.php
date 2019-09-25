@@ -6,10 +6,13 @@ namespace PTS\SyliusReferralPlugin\Controller;
 use FOS\RestBundle\View\View;
 use Http\Client\Exception\HttpException;
 use http\Exception\InvalidArgumentException;
+use PTS\SyliusReferralPlugin\Event\EnrollerChangeEvent;
+use PTS\SyliusReferralPlugin\Repository\CustomerRepository;
 use PTS\SyliusReferralPlugin\Service\CustomerManager;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Core\Model\ShopUser;
 use Sylius\Component\Resource\ResourceActions;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -137,6 +140,10 @@ class CustomerController extends ResourceController
     }
     public function adminEditEnrollerAction(Request $request, $id): Response
     {
+        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
+        $this->isGrantedOr403($configuration, ResourceActions::SHOW);
+        $resource = $this->findOr404($configuration);
+
         $translator = $this->get('translator');
         $session = $this->get('session');
         $enabled = $this->getParameter('app_edit_enroller_enabled');
@@ -147,12 +154,20 @@ class CustomerController extends ResourceController
             );
             return $this->redirectToRoute('sylius_admin_customer_show', ['id' => $id]);
         }
+
         if ($request->query->has('_enroller') && $request->query->has('_action')) {
             $enrollerId = $request->query->get('_enroller');
             if ($enrollerId !== $id && $request->query->get('_action') === 'selectEnroller') {
                 /** @var CustomerManager $customerManager */
                 $customerManager = $this->get('app.customer.manager');
                 $customerManager->changeCustomerEnroller($id, $enrollerId);
+                /** @var CustomerRepository $customerRepository */
+                $customerRepository = $this->get('sylius.repository.customer');
+                $enroller = $customerRepository->getCustomerById($enrollerId);
+                $enrollerChangeEvent = new EnrollerChangeEvent($resource, $enroller);
+                /** @var EventDispatcher $eventDispatcher */
+                $eventDispatcher = $this->get('debug.event_dispatcher');
+                $eventDispatcher->dispatch($enrollerChangeEvent, EnrollerChangeEvent::NAME);
                 $session->getFlashBag()->add(
                     'success',
                     $translator->trans('app.messages.success.changedEnroller')
@@ -163,9 +178,6 @@ class CustomerController extends ResourceController
                 throw new InvalidArgumentException("Invalid request. Can't choose customer as his own enroller");
             }
         }
-        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
-        $this->isGrantedOr403($configuration, ResourceActions::SHOW);
-        $resource = $this->findOr404($configuration);
 
         $resources = $this->resourcesCollectionProvider->get($configuration, $this->repository);
 

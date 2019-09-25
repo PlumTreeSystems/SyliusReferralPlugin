@@ -8,6 +8,14 @@ use Sylius\Bundle\CoreBundle\Doctrine\ORM\CustomerRepository as BaseCustomerRepo
 
 class CustomerRepository extends BaseCustomerRepository
 {
+    public function getCustomerById($id)
+    {
+        $query = $this->createQueryBuilder('c')
+            ->where('c.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery();
+        return $query->execute();
+    }
     public function getEnrolled($enroller, $limit, $currentPage)
     {
         if (!$currentPage) {

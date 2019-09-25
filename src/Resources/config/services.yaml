@@ -36,3 +36,8 @@ services:
     arguments:
       - '@doctrine.orm.entity_manager'
     public: true
+  app.enroller.manager:
+    class: 'PTS\SyliusReferralPlugin\Service\EnrollerManager'
+    arguments:
+      - '@security.token_storage'
+    public: true
