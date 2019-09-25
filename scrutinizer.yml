@@ -3,7 +3,7 @@ build:
     coverage:
       tests:
         override:
-          - command: 'bin/behat'
+          - command: 'vendor/bin/behat'
             coverage:
               file: 'build/behat-coverage'
               format: 'clover'
