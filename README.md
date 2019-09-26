@@ -1,4 +1,4 @@
-# Sylius Referral Plugin [![Build Status](https://travis-ci.org/PlumTreeSystems/SyliusReferralPlugin.svg?branch=master)](https://travis-ci.org/PlumTreeSystems/SyliusReferralPlugin)
+# Sylius Referral Plugin [![Build Status](https://travis-ci.org/PlumTreeSystems/SyliusReferralPlugin.svg?branch=master)](https://travis-ci.org/PlumTreeSystems/SyliusReferralPlugin)[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/PlumTreeSystems/SyliusReferralPlugin/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/PlumTreeSystems/SyliusReferralPlugin/?branch=master)
 
 A plugin that lets you customize how you filter your orders and save them into batches.
 
