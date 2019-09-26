@@ -44,10 +44,18 @@ default:
                     include:
                         directories:
                             'src': ~
+                    exclude:
+                        directories:
+                            'src/Event': ~
+                            'src/DependencyInjection': ~
+                            'src/Migrations': ~
+                        files:
+                            - src/PTSSyliusReferralPlugin.php
+                            - src/Service/EnrollerManager.php
             report:
                 format: clover
                 options:
-                    target: build/behat-coverage
+                    target: build/logs/clover.xml
         FriendsOfBehat\SymfonyExtension:
             bootstrap: tests/Application/config/bootstrap.php
             kernel:

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1569413507">
-  <project timestamp="1569413507">
+<coverage generated="1569496800">
+  <project timestamp="1569496800">
     <package name="PTS\SyliusReferralPlugin\Controller">
       <file name="/home/mykolas/Documents/plugin-project/lib/PTS/SyliusReferralPlugin/src/Controller/AccountController.php">
         <class name="PTS\SyliusReferralPlugin\Controller\AccountController" namespace="PTS\SyliusReferralPlugin\Controller">
@@ -156,17 +156,13 @@
     <package name="PTS\SyliusReferralPlugin\DependencyInjection">
       <file name="/home/mykolas/Documents/plugin-project/lib/PTS/SyliusReferralPlugin/src/DependencyInjection/Configuration.php">
         <class name="PTS\SyliusReferralPlugin\DependencyInjection\Configuration" namespace="PTS\SyliusReferralPlugin\DependencyInjection">
-          <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="39" coveredstatements="0" elements="40" coveredelements="0"/>
+          <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="0" elements="33" coveredelements="0"/>
         </class>
         <line num="15" type="method" name="getConfigTreeBuilder" visibility="public" complexity="2" crap="6.00" count="0"/>
-        <line num="16" type="stmt" count="0"/>
         <line num="17" type="stmt" count="0"/>
         <line num="18" type="stmt" count="0"/>
         <line num="19" type="stmt" count="0"/>
-        <line num="20" type="stmt" count="0"/>
         <line num="22" type="stmt" count="0"/>
-        <line num="23" type="stmt" count="0"/>
-        <line num="25" type="stmt" count="0"/>
         <line num="26" type="stmt" count="0"/>
         <line num="27" type="stmt" count="0"/>
         <line num="28" type="stmt" count="0"/>
@@ -176,7 +172,6 @@
         <line num="32" type="stmt" count="0"/>
         <line num="33" type="stmt" count="0"/>
         <line num="34" type="stmt" count="0"/>
-        <line num="36" type="stmt" count="0"/>
         <line num="37" type="stmt" count="0"/>
         <line num="38" type="stmt" count="0"/>
         <line num="39" type="stmt" count="0"/>
@@ -195,35 +190,29 @@
         <line num="52" type="stmt" count="0"/>
         <line num="53" type="stmt" count="0"/>
         <line num="54" type="stmt" count="0"/>
-        <line num="55" type="stmt" count="0"/>
         <line num="57" type="stmt" count="0"/>
-        <line num="58" type="stmt" count="0"/>
-        <metrics loc="59" ncloc="54" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="39" coveredstatements="0" elements="40" coveredelements="0"/>
+        <metrics loc="59" ncloc="54" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="0" elements="33" coveredelements="0"/>
       </file>
       <file name="/home/mykolas/Documents/plugin-project/lib/PTS/SyliusReferralPlugin/src/DependencyInjection/PTSSyliusReferralExtension.php">
         <class name="PTS\SyliusReferralPlugin\DependencyInjection\PTSSyliusReferralExtension" namespace="PTS\SyliusReferralPlugin\DependencyInjection">
-          <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="0" elements="19" coveredelements="0"/>
+          <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="0" elements="15" coveredelements="0"/>
         </class>
         <line num="17" type="method" name="load" visibility="public" complexity="2" crap="6.00" count="0"/>
-        <line num="18" type="stmt" count="0"/>
         <line num="19" type="stmt" count="0"/>
         <line num="20" type="stmt" count="0"/>
         <line num="22" type="stmt" count="0"/>
         <line num="24" type="stmt" count="0"/>
         <line num="25" type="stmt" count="0"/>
         <line num="26" type="stmt" count="0"/>
-        <line num="27" type="stmt" count="0"/>
         <line num="28" type="stmt" count="0"/>
         <line num="29" type="stmt" count="0"/>
         <line num="30" type="stmt" count="0"/>
-        <line num="31" type="stmt" count="0"/>
         <line num="32" type="stmt" count="0"/>
-        <line num="33" type="stmt" count="0"/>
         <line num="34" type="stmt" count="0"/>
         <line num="35" type="stmt" count="0"/>
         <line num="36" type="stmt" count="0"/>
         <line num="37" type="stmt" count="0"/>
-        <metrics loc="38" ncloc="35" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="0" elements="19" coveredelements="0"/>
+        <metrics loc="38" ncloc="35" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="0" elements="15" coveredelements="0"/>
       </file>
     </package>
     <package name="PTS\SyliusReferralPlugin\Entity">
@@ -550,18 +539,15 @@
       </file>
       <file name="/home/mykolas/Documents/plugin-project/lib/PTS/SyliusReferralPlugin/src/Service/EnrollerManager.php">
         <class name="PTS\SyliusReferralPlugin\Service\EnrollerManager" namespace="PTS\SyliusReferralPlugin\Service">
-          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="9" coveredelements="0"/>
+          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="6" coveredelements="0"/>
         </class>
         <line num="12" type="method" name="__construct" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="13" type="stmt" count="0"/>
         <line num="14" type="stmt" count="0"/>
         <line num="15" type="stmt" count="0"/>
         <line num="17" type="method" name="getEnroller" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="18" type="stmt" count="0"/>
         <line num="19" type="stmt" count="0"/>
         <line num="20" type="stmt" count="0"/>
-        <line num="21" type="stmt" count="0"/>
-        <metrics loc="21" ncloc="21" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="9" coveredelements="0"/>
+        <metrics loc="21" ncloc="21" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="6" coveredelements="0"/>
       </file>
       <file name="/home/mykolas/Documents/plugin-project/lib/PTS/SyliusReferralPlugin/src/Service/ReferralManager.php">
         <class name="PTS\SyliusReferralPlugin\Service\ReferralManager" namespace="PTS\SyliusReferralPlugin\Service">
@@ -651,6 +637,6 @@
         <metrics loc="180" ncloc="161" classes="1" methods="10" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="71" coveredstatements="53" elements="81" coveredelements="58"/>
       </file>
     </package>
-    <metrics files="16" loc="1170" ncloc="1071" classes="15" methods="55" coveredmethods="20" conditionals="0" coveredconditionals="0" statements="477" coveredstatements="167" elements="532" coveredelements="187"/>
+    <metrics files="16" loc="1170" ncloc="1071" classes="15" methods="55" coveredmethods="20" conditionals="0" coveredconditionals="0" statements="463" coveredstatements="167" elements="518" coveredelements="187"/>
   </project>
 </coverage>
