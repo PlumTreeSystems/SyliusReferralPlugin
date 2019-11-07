@@ -41,3 +41,6 @@ services:
     arguments:
       - '@security.token_storage'
     public: true
+  Symfony\Component\HttpKernel\Debug\TraceableEventDispatcher:
+    alias: debug.event_dispatcher
+    public: true
