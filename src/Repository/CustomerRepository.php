@@ -14,7 +14,7 @@ class CustomerRepository extends BaseCustomerRepository
             ->where('c.id = :id')
             ->setParameter('id', $id)
             ->getQuery();
-        return $query->execute();
+        return $query->getSingleResult();
     }
     public function getEnrolled($enroller, $limit, $currentPage)
     {
