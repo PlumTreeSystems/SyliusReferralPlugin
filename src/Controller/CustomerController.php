@@ -166,7 +166,7 @@ class CustomerController extends ResourceController
                 $enroller = $customerRepository->getCustomerById($enrollerId);
                 $enrollerChangeEvent = new EnrollerChangeEvent($resource, $enroller);
                 /** @var EventDispatcher $eventDispatcher */
-                $eventDispatcher = $this->get('debug.event_dispatcher');
+                $eventDispatcher = $this->get('event_dispatcher');
                 $eventDispatcher->dispatch($enrollerChangeEvent, EnrollerChangeEvent::NAME);
                 $session->getFlashBag()->add(
                     'success',
